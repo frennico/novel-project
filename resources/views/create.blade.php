@@ -125,7 +125,7 @@
                     <p class=" mb-1 xl:mb-4">Genre : {{ $data->genre }}</p>
                     <div class="hidden sm:block mb-1 xl:mb-4">Sinopsis : {{ $data->sinopsis }}</div>
                 </div>
-                <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500" wire:click="edit({{ $data->id }})">Edit</a>
+                <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer" wire:click="editnovel({{ $data->id }})">Edit</a>
             </div>
         @endforeach
     </div>

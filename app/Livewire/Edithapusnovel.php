@@ -21,24 +21,6 @@ class Edithapusnovel extends Component
     public function edit($id)
     {
         $datanovel = Datanovel::findOrFail($id);
-        $this->editId = $id;
-        $this->titlemodel = $datanovel->title;
-        $this->sinopsismodel = $datanovel->sinopsis;
-        $this->genremodel = $datanovel->genre;
-        // Uncomment the following line if you want to display the image being edited
-        // $this->imagemodel = $datanovel->image;
-
-        // Optionally, you can add a confirmation message or perform other actions before redirecting
-        // For example:
-        // session()->flash('message', 'Editing novel with ID ' . $id);
-
-        // Redirect to the update page with the selected ID
-        return redirect()->route('update', ['id' => $id]);
-    }
-
-    public function mount($id)
-    {
-        $datanovel = Datanovel::findOrFail($id);
         $this->selectedId = $id;
         $this->titlemodel = $datanovel->title;
         $this->sinopsismodel = $datanovel->sinopsis;
@@ -46,6 +28,7 @@ class Edithapusnovel extends Component
         // Jika ingin menampilkan gambar yang sedang diedit
         // Anda dapat menambahkan kode berikut:
         // $this->imagemodel = $datanovel->image;
+        return redirect()->route('update', ['id' => $id]);
     }
 
     public function update()
