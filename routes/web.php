@@ -22,9 +22,7 @@ Route::get('/create', function () {
 Route::get('/createTitle', function () {
     return view('createTitle');
 });
-Route::get('/editnovel', function () {
-    return view('editnovel');
-});
+Route::get('/editnovel/{idnovel}', [App\Http\Controllers\HomeController::class,'index'])->name('editnovelsee');
 
 Auth::routes();
 
