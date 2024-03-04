@@ -22,11 +22,9 @@ Route::get('/create', function () {
 Route::get('/createTitle', function () {
     return view('createTitle');
 });
-Route::get('/editnovel', function () {
-    return view('editnovel');
-});
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/editnovel/{id}', [App\Livewire\Edithapusnovel::class,'edit'])->name('editnovel');
