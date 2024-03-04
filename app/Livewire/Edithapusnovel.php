@@ -17,7 +17,14 @@ class Edithapusnovel extends Component
     public $selectedId;
     public $editId;
 
-
+    public function mount($id)
+    {
+        $datanovel = Datanovel::findOrFail($id);
+        $this->selectedId = $id;
+        $this->titlemodel = $datanovel->title;
+        $this->sinopsismodel = $datanovel->sinopsis;
+        $this->genremodel = $datanovel->genre;
+    }
     public function edit($id)
     {
         $datanovel = Datanovel::findOrFail($id);

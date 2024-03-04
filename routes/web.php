@@ -27,4 +27,7 @@ Route::get('/createTitle', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/editnovel/{id}', [App\Livewire\Edithapusnovel::class,'edit'])->name('editnovel');
+// Route::get('/editnovel/{id}', App\Livewire\Edithapusnovel::class)->name('editnovel');
+Route::get('/editnovel/{id}', function () {
+    return view('editnovel');
+})->name('editnovel');
