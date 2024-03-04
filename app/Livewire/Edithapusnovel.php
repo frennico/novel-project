@@ -28,7 +28,6 @@ class Edithapusnovel extends Component
         // Jika ingin menampilkan gambar yang sedang diedit
         // Anda dapat menambahkan kode berikut:
         // $this->imagemodel = $datanovel->image;
-        return redirect()->route('update', ['id' => $id]);
     }
 
     public function update()
