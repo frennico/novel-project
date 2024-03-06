@@ -30,4 +30,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/editnovel/{id}', function () {
     return view('editnovel');
 })->name('editnovel');
+// Route::get('/editnovel/{id}', App\Livewire\Edithapusnovel::class)->name('editnovel');
+Route::get('/editnovel/{id}', function () {
+    return view('editnovel');
+})->name('editnovel');
 
+Route::get('/hapus/{id}', [App\Http\Controllers\HomeController::class, 'hapus']);

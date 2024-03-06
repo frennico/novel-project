@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Datanovel;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -66,6 +67,7 @@ class Edithapusnovel extends Component
 
     public function hapus($id)
     {
+        dd($id);
         Datanovel::findOrFail($id)->delete();
         $this->reset();
     }
