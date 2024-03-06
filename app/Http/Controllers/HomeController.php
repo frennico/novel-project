@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\datanovel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,4 +27,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function editnovelsee($idnovel){
+        $datanovel = datanovel::find($idnovel);
+        return view('editnovel', [
+            'datanovel => $datanovel'
+        ]);
+    }
+    
 }

@@ -16,6 +16,9 @@ class Edithapusnovel extends Component
     public $imagemodel;
     public $selectedId;
     public $editId;
+    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense', 'Fantasy'];
+
+
 
     public function mount($id)
     {
@@ -25,6 +28,7 @@ class Edithapusnovel extends Component
         $this->sinopsismodel = $datanovel->sinopsis;
         $this->genremodel = $datanovel->genre;
     }
+
     public function edit($id)
     {
         $datanovel = Datanovel::findOrFail($id);
@@ -32,9 +36,7 @@ class Edithapusnovel extends Component
         $this->titlemodel = $datanovel->title;
         $this->sinopsismodel = $datanovel->sinopsis;
         $this->genremodel = $datanovel->genre;
-        // Jika ingin menampilkan gambar yang sedang diedit
-        // Anda dapat menambahkan kode berikut:
-        // $this->imagemodel = $datanovel->image;
+        $this->imagemodel = $datanovel->image;
     }
 
     public function update()
@@ -59,7 +61,13 @@ class Edithapusnovel extends Component
         $datanovel->genre = $this->genremodel;
         $datanovel->save();
 
-        return redirect()->route('create');
+        return redirect('/create');
+    }
+
+    public function hapus($id)
+    {
+        Datanovel::findOrFail($id)->delete();
+        $this->reset();
     }
 
     public function render()
