@@ -128,8 +128,6 @@
                     <div class="w-[850px] h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto ">{{ $data->sinopsis }}</div>
                 </div>
                 <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
-                @csrf
-                @method('delete')
                 <a class="absolute mt-[120px] right-40 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer" wire:click="hapus('{{ $data->id }}')">Hapus</a>
             </div>
         @endforeach
