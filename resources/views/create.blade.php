@@ -151,7 +151,7 @@
                 <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer"
                     href="/editnovel/{{ $data->id }}">Edit</a>
                 <a class="absolute mt-[120px] right-40 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer"
-                    wire:click="hapus('{{ $data->id }}')">Hapus</a>
+                    href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
             </div>
         @endforeach
     </div>

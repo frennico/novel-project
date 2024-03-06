@@ -34,3 +34,5 @@ Route::get('/editnovel/{id}', function () {
 Route::get('/editnovel/{id}', function () {
     return view('editnovel');
 })->name('editnovel');
+
+Route::get('/hapus/{id}', [App\Http\Controllers\HomeController::class, 'hapus']);
