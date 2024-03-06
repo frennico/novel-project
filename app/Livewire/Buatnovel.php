@@ -12,8 +12,10 @@ class Buatnovel extends Component
 
     public $titlemodel;
     public $sinopsismodel;
-    public $genremodel;
+    public $genremodel = [];
     public $imagemodel;
+    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense', 'Fantasy'];
+
 
     public function simpan()
     {
@@ -33,6 +35,8 @@ class Buatnovel extends Component
 
         // Clear input fields after saving
         $this->reset(['titlemodel', 'sinopsismodel', 'genremodel', 'imagemodel']);
+
+        return redirect('/create');
     }
     public function render()
     {

@@ -206,12 +206,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 px-4">
                 <!-- Novel Baru Menu 1 -->
                 @foreach (App\Models\Datanovel::all() as $data)
-                <div class="flex flex-wrap mt-6 xl:mt-8 ml-4 sm:ml-6 md:ml-0 lg:ml-4 xl:ml-0 w-11/12 md:w-[336px] lg:w-11/12 xl:w-[336px] shadow-md">
+                <div class="flex flex-wrap p-3 mt-6 xl:mt-8 ml-4 sm:ml-6 md:ml-0 lg:ml-4 xl:ml-0 w-11/12 md:w-[336px] lg:w-11/12 xl:w-[336px] shadow-md">
                     <div class="flex space-x-4">
                         <div class="flex space-x-4">
                             <img src="{{ asset('storage/'.$data->image) }}" alt="" class="w-24 h-36 ">
                             <div class="w-3/4">
-                                <h3 class="text-xl font-semibold mb-3">{{ $data->title }}</h3>
+                                <h3 class="w-48 text-xl font-semibold mb-3 truncate">{{ $data->title }}</h3>
                                 <ul class="list-disc pl-4 md:pl-6">
                                     <li class="mb-2 ml-2">
                                         <a href="" class="text-gray-700">Chapter 1</a>

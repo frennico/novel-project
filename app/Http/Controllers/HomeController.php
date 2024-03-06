@@ -27,10 +27,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
     public function editnovelsee($idnovel){
         $datanovel = datanovel::find($idnovel);
         return view('editnovel', [
             'datanovel => $datanovel'
         ]);
     }
+    
 }

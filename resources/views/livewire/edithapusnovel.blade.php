@@ -4,14 +4,23 @@
     <div class="flex">
         <div class="w-[296px] h-[451px]">
             <input type="file" name="image" wire:model="imagemodel">
+            @if ($imagemodel)
+                <img src="{{ $imagemodel->temporaryUrl() }}" class="w-[296px] h-[451px] border-2">
+            @endif
         </div>
         <div class="ml-10">
             <div class="mt-10 text-3xl">{{ __('Title') }}</div>
-            <input id="title" type="text" class="bg-slate-200 border-2 w-1/2 border-black py-1 px-1" wire:model="titlemodel" autofocus>
+            <input id="title" type="text" class="border-2 w-1/2 border-black py-1 px-1" wire:model="titlemodel" autofocus>
             <div class="mt-10 text-3xl">{{ __('Sinopsis') }}</div>
-            <textarea name="" wire:model="sinopsismodel" id="" cols="80" rows="6" class="bg-slate-200 border-2 border-black py-1 px-1"></textarea>
-            <div class="mt-10 text-3xl">{{ __('Genre : ') }}<input type="text" class="bg-slate-200 border-2 border-black py-1 px-1" wire:model="genremodel"></div>
-            <div class="fixed top-10 right-3"><a class="p-1 mr-4 px-8 shadow-xl text-center rounded-md" style="background-color: red;" wire:click="update">Next</a></div>
+            <textarea name="" wire:model="sinopsismodel" id="" cols="80" rows="6" class=" border-2 border-black py-1 px-1"></textarea>
+            <div class="mt-10 text-md">{{ __('Genre : ') }}
+                <select wire:model="genremodel" class=" border-2 border-black py-1 px-1" >
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre }}">{{ $genre }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="fixed top-10 right-3"><a class="p-1 mr-4 px-8 shadow-xl text-center rounded-md cursor-pointer" style="background-color: red;" wire:click="update">Update</a></div>
         </div>
     </div>
 </div>

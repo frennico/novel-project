@@ -114,18 +114,23 @@
 
     <!-- Project -->
     <div class="w-full h-full bg-slate-200">
-        <div class="bg-slate-800 text-center text-white ml-10 w-32 h-10 py-2 mb-8 px-6">Project</div>
+        <div class="bg-slate-600 text-center text-white ml-10 w-32 h-10 py-2 mb-8 px-6">Project</div>
+
         @foreach (App\Models\Datanovel::all() as $data)
-            <div class="grid grid-cols-4 xl:grid-cols-6 bg-zinc-500 mb-8 p-6">
+            <div class="grid grid-cols-4 xl:grid-cols-6 bg-zinc-500 mb-8 p-6 ">
                 <div class="border-2 border-black">
                     <img src="{{ asset('storage/'.$data->image) }}" alt="" class="h-32 xl:w-[225px] xl:h-[310px]">
                 </div>
                 <div class="ml-10 col-span-3 xl:col-span-5">
-                    <div class=" mb-1 xl:mb-4 font-bold xl:text-4xl">{{ $data->title }}</div>
+                    <div class="w-[600px] h-12 mb-1 xl:mb-4 font-bold xl:text-4xl truncate">{{ $data->title }}</div>
                     <p class=" mb-1 xl:mb-4">Genre : {{ $data->genre }}</p>
-                    <div class="hidden sm:block mb-1 xl:mb-4">Sinopsis : {{ $data->sinopsis }}</div>
+                    <p class="pb-1">Sinopsis : </p>
+                    <div class="w-[850px] h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto ">{{ $data->sinopsis }}</div>
                 </div>
-                <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer" href="{{ url('editnovel', ['id' => $data->id]) }} }}">Edit</a>
+                <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
+                @csrf
+                @method('delete')
+                <a class="absolute mt-[120px] right-40 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer" wire:click="hapus('{{ $data->id }}')">Hapus</a>
             </div>
         @endforeach
     </div>
