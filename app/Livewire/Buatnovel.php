@@ -14,7 +14,7 @@ class Buatnovel extends Component
     public $sinopsismodel;
     public $genremodel = [];
     public $imagemodel;
-    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense', 'Fantasy'];
+    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense'];
 
 
     public function simpan()
@@ -38,6 +38,7 @@ class Buatnovel extends Component
 
         return redirect('/create');
     }
+
     public function render()
     {
         $datanovel = datanovel::all();

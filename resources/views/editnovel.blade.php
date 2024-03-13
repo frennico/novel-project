@@ -11,7 +11,7 @@
     <!-- navbar -->
     <div class="static flex z-40 items-center justify-between bg-slate-800 p-4">
         <div class="items-center flex"><a href="{{ url()->previous() }}" class="p-2 px-10 justify-start"><img src="../asset/Panah-kiri.png" alt="arrow"></a></div>
-        <div class="items-center text-center text-4xl p-2 pr-16 font-bold text-white">CHANGE</div>
+        <div class="items-center text-center justify-center text-4xl p-2 pr-16 font-bold text-white">CHANGE</div>
         <div></div>
     </div>
     <div class="px-20 pt-14">

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Datanovel;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,8 +17,8 @@ class Edithapusnovel extends Component
     public $imagemodel;
     public $selectedId;
     public $editId;
-    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense', 'Fantasy'];
-
+    public $genres = ['Mystery', 'Romance', 'Sci-Fi', 'Fantasy', 'Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Thriller', 'Historical', 'Science', 'Non-fiction', 'Biography', 'Poetry', 'Western', 'Children', 'Classic', 'Crime', 'Suspense'];
+    public $listeners = ['show-post-modal'];
 
 
     public function mount($id)
@@ -68,6 +69,11 @@ class Edithapusnovel extends Component
     {
         Datanovel::findOrFail($id)->delete();
         $this->reset();
+    }
+
+    public function showPostModal($id)
+    {
+        $this->hapus($id);
     }
 
     public function render()

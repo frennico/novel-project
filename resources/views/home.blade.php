@@ -211,7 +211,7 @@
                         <div class="flex space-x-4">
                             <img src="{{ asset('storage/'.$data->image) }}" alt="" class="w-24 h-36 ">
                             <div class="w-3/4">
-                                <h3 class="w-48 text-xl font-semibold mb-3 truncate">{{ $data->title }}</h3>
+                                <h3 class="w-48 text-xl font-semibold mb-3 truncate"><a href="/Tampilan/{{ $data->id }}">{{ $data->title }}</a></h3>
                                 <ul class="list-disc pl-4 md:pl-6">
                                     <li class="mb-2 ml-2">
                                         <a href="" class="text-gray-700">Chapter 1</a>

@@ -28,11 +28,28 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function editnovelsee($idnovel){
+    public function hapus($id)
+    {
+
+        Datanovel::findOrFail($id)->delete();
+        return back();
+    }
+
+
+    public function editnovelsee($idnovel)
+    {
         $datanovel = datanovel::find($idnovel);
         return view('editnovel', [
             'datanovel => $datanovel'
         ]);
     }
-    
+
+    public function Tampilan($id)
+    {
+        $Tampilan = Datanovel::find($id);
+        return view('Tampilan')->with([
+        'Tampilan' => $Tampilan
+        ]);
+    }
+
 }

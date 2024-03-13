@@ -121,15 +121,22 @@
                 <div class="border-2 border-black">
                     <img src="{{ asset('storage/'.$data->image) }}" alt="" class="h-32 xl:w-[225px] xl:h-[310px]">
                 </div>
-                <div class="ml-10 col-span-3 xl:col-span-5">
+                <div class="ml-10 col-span-3 xl:col-span-4">
                     <div class="w-[600px] h-12 mb-1 xl:mb-4 font-bold xl:text-4xl truncate">{{ $data->title }}</div>
-                    <p class=" mb-1 xl:mb-4">Genre : {{ $data->genre }}</p>
-                    <p class="pb-1">Sinopsis : </p>
-                    <div class="w-[850px] h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto ">{{ $data->sinopsis }}</div>
+                    <p class="w-11/12 mb-1 xl:mb-4">Genre : {{ $data->genre }}</p>
+                    <p class="pb-1 w-11/12">Sinopsis : </p>
+                    <div class="w-11/12 h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto border-2">{{ $data->sinopsis }}</div>
                 </div>
-                <a class="absolute mt-[120px] right-10 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
-                <a class="absolute mt-[120px] right-40 py-1 md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer" wire:click="hapus('{{ $data->id }}')">Hapus</a>
+                <div class="grid grid-cols-2 grid-rows-5 gap-7">
+                <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
+                <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-red-500 cursor-pointer" href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
+                <a href="{{ url('/chapternovel') }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
+                @foreach (App\Models\chapter::all() as $data)
+                    <div>{{ $data->chapter }}</div>
+                @endforeach
+        </div>
             </div>
+
         @endforeach
     </div>
 </body>
