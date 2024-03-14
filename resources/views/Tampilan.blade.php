@@ -25,14 +25,16 @@
                 </button>
             </div>
             <!-- Logo -->
-            <a href="#" class="text-white text-lg font-semibold">Logo</a>
+            <a class="hidden sm:block text-white text-lg font-semibold" href="{{ url('/') }}">
+                {{ config('home', 'Novel') }}
+            </a>
 
             <!-- Navbar Links (Desktop) -->
             <div class="hidden lg:flex space-x-4">
                 <a href="./Novel.html" class="text-white hover:text-gray-300">Home</a>
-                <a href="#" class="text-white hover:text-gray-300">Genre</a>
+                <a href="{{ url('/home') }}" class="text-white hover:text-gray-300">Genre</a>
                 <a href="#" class="text-white hover:text-gray-300">History</a>
-                <a href="#" class="text-white hover:text-gray-300">Create</a>
+                <a href="{{ url('/create') }}" class="text-white hover:text-gray-300">Create</a>
                 <a href="#" class="text-white hover:text-gray-300">Profile</a>
             </div>
 
@@ -53,12 +55,54 @@
                     </button>
                 </div>
                 <div class="flex flex-col items-center">
-                    <a href="./Novel.html" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
+                    <a href="{{ url('/home') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Genre</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">History</a>
-                    <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Creat</a>
+                    <a href="{{ url('/create') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Creat</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Profile</a>
                 </div>
+            </div>
+
+            <div id="navbarSupportedContent">
+                <!-- Right Side Of Navbar -->
+                <ul>
+                    <!-- Authentication Links -->
+                    @guest
+                    <div class="flex gap-4">
+                        @if (Route::has('login'))
+                            <li class="">
+                                <a class="px-0" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="">
+                                <a class="px-0" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    </div>
+                    @else
+                        {{-- dropdown --}}
+                        <div x-data="{ isOpen: false }" class="relative">
+                            <button @click="isOpen = !isOpen" class="block text-white text-lg hover:text-gray-300 focus:outline-none">
+                                {{ Auth::user()->name }}
+                                <svg class="h-4 w-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div x-show="isOpen" @click.away="isOpen = false" class="absolute z-50 bg-white rounded-md shadow-lg">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                     {{ __('Logout') }}</a>
+
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                            </div>
+                        </div>
+                    @endguest
+                </ul>
             </div>
         </div>
     </nav>
@@ -70,13 +114,13 @@
                     <img src="{{ asset('storage/'.$Tampilan->image) }}" alt="Cover" class="w-[230px] h-[350px]">
                 </div>
                 <div class="text-left p-4 lg:col-span-3 xl:col-span-4">
+
+                    <div>{{ $Tampilan->chapter }}</div>
+
                     <p class="text-black font-bold text-4xl pb-5">{{ $Tampilan->title }}</p>
-                    <p class="text-black font-bold pb-5">Author(s) : Jee Gab Song</p>
-                    <p class="text-black">Sinopsis: Waking up, Kim Hajin finds himself in a familiar world but an unfamiliar body.
-                        The world he created himself and the story he wrote, however, never ended.
-                        He has become an extra in the novel, a filler character with no importance to the story.
-                        The only clue to escape is to stay close to the main storyline.
-                        However, he soon learns that this world is not exactly identical to his creation.</p>
+                    <p class="text-black font-bold pb-5">Author(s) : {{ $Tampilan->user_name }}</p>
+                    <p class="text-black">Sinopsis:</p>
+                    <div class="w-11/12 h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto border-2">{{ $Tampilan->sinopsis }}</div>
                 </div>
             </div>
     </div>

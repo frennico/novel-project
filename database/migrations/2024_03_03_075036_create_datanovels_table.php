@@ -12,12 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('datanovels', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
             $table->id();
             $table->string('image')->nullable();
             $table->string('title');
             $table->longText('sinopsis');
             $table->string('genre');
             $table->timestamps();
+
+            // Menambahkan kunci asing ke user_id yang merujuk ke kolom id di tabel users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

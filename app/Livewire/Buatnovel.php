@@ -5,11 +5,13 @@ namespace App\Livewire;
 use App\Models\datanovel;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 class Buatnovel extends Component
 {
     use WithFileUploads;
 
+    public $user_id;
     public $titlemodel;
     public $sinopsismodel;
     public $genremodel = [];
@@ -27,6 +29,7 @@ class Buatnovel extends Component
         }
 
         $simpan = new datanovel();
+        $simpan->user_id = Auth::id();
         $simpan->title = $this->titlemodel;
         $simpan->sinopsis = $this->sinopsismodel;
         $simpan->genre = $this->genremodel;

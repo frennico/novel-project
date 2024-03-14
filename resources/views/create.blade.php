@@ -117,6 +117,7 @@
         <div class="bg-slate-600 text-center text-white ml-10 w-32 h-10 py-2 mb-8 px-6">Project</div>
 
         @foreach (App\Models\Datanovel::all() as $data)
+        @if(Auth::check() && Auth::id() == $data->user_id)
             <div class="grid grid-cols-4 xl:grid-cols-6 bg-zinc-500 mb-8 p-6 ">
                 <div class="border-2 border-black">
                     <img src="{{ asset('storage/'.$data->image) }}" alt="" class="h-32 xl:w-[225px] xl:h-[310px]">
@@ -128,16 +129,15 @@
                     <div class="w-11/12 h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto border-2">{{ $data->sinopsis }}</div>
                 </div>
                 <div class="grid grid-cols-2 grid-rows-5 gap-7">
-                <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
-                <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-red-500 cursor-pointer" href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
-                <a href="{{ url('/chapternovel') }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
-                @foreach (App\Models\chapter::all() as $data)
+                    <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
+                    <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-red-500 cursor-pointer" href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
+                    <a href="{{ url('/chapternovel') }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
                     <div>{{ $data->chapter }}</div>
-                @endforeach
-        </div>
+                </div>
             </div>
-
+            @endif
         @endforeach
+
     </div>
 </body>
 </html>

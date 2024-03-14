@@ -19,9 +19,7 @@ Route::get('/', function () {
 Route::get('/create', function () {
     return view('create');
 });
-Route::get('/Tampilan/{idnovel}', function () {
-    return view('Tampilan');
-});
+
 Route::get('/createTitle', function () {
     return view('createTitle');
 });
@@ -33,6 +31,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/hapus/{id}', [App\Http\Controllers\HomeController::class, 'hapus']);
+Route::get('/Tampilan/{id}', [App\Http\Controllers\HomeController::class, 'Tampilan'])->name('Tampilan');
 
 // Route::get('/editnovel/{id}', App\Livewire\Edithapusnovel::class)->name('editnovel');
 Route::get('/editnovel/{id}', function () {
