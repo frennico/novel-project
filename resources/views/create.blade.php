@@ -30,8 +30,8 @@
 
             <!-- Navbar Links (Desktop) -->
             <div class="hidden lg:flex space-x-4">
-                <a href="{{ url('/home') }}" class="text-white hover:text-gray-300">Home</a>
-                <a href="#" class="text-white hover:text-gray-300">Genre</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Genre</a>
                 <a href="#" class="text-white hover:text-gray-300">History</a>
                 <a href="{{ url('/create') }}" class="text-white hover:text-gray-300">Create</a>
                 <a href="#" class="text-white hover:text-gray-300">Profile</a>
@@ -54,7 +54,7 @@
                     </button>
                 </div>
                 <div class="flex flex-col items-center">
-                    <a href="{{ url('/home') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
+                    <a href="{{ url('/') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Genre</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">History</a>
                     <a href="{{ url('/create') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Creat</a>
@@ -132,7 +132,6 @@
                     <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
                     <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-red-500 cursor-pointer" href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
                     <a href="{{ url('/chapternovel') }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
-                    <div>{{ $data->chapter }}</div>
                 </div>
             </div>
             @endif

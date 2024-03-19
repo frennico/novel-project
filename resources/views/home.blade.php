@@ -209,20 +209,18 @@
                 <div class="flex flex-wrap p-3 mt-6 xl:mt-8 ml-4 sm:ml-6 md:ml-0 lg:ml-4 xl:ml-0 w-11/12 md:w-[336px] lg:w-11/12 xl:w-[336px] shadow-md">
                     <div class="flex space-x-4">
                         <div class="flex space-x-4">
-                            <img src="{{ asset('storage/'.$data->image) }}" alt="" class="w-24 h-36 ">
+                            <a href="/Tampilan/{{ $data->id }}"><img src="{{ asset('storage/'.$data->image) }}" alt="" class="w-24 h-36 hover:shadow-2xl"></a>
                             <div class="w-3/4">
-                                <h3 class="w-48 text-xl font-semibold mb-3 truncate"><a href="/Tampilan/{{ $data->id }}">{{ $data->title }}</a></h3>
-                                <ul class="list-disc pl-4 md:pl-6">
-                                    <li class="mb-2 ml-2">
-                                        <a href="" class="text-gray-700">Chapter 1</a>
-                                    </li>
-                                    <li class="mb-2 ml-2">
-                                        <a href="#" class="text-gray-700">Chapter 2</a>
-                                    </li>
-                                    <li class="mb-2 ml-2">
-                                        <a href="#" class="text-gray-700">Chapter 3</a>
-                                    </li>
-                                </ul>
+                                <h3 class="w-48 text-xl font-semibold mb-3 truncate hover:text-red-500"><a href="/Tampilan/{{ $data->id }}">{{ $data->title }}</a></h3>
+                                <div class="overflow-hidden h-24">
+                                    <ul class="flex flex-wrap-reverse list-disc pl-4 md:pl-6">
+                                        @foreach (App\Models\Chapter::where('datanovel_id', $data->id)->get() as $chapter)
+                                            <li class="mb-2 ml-2 w-full">
+                                                <a href="{{ url('/Bacaan/' . $chapter->id) }}" class="text-gray-700 hover:text-red-500">Chapter {{ $loop->iteration }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

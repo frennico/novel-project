@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Chapter;
+use App\Models\datanovel;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -11,27 +12,23 @@ class Chapterlist extends Component
 {
     use WithFileUploads;
 
+    public $datanovelId;
     public $chaptermodel;
 
     public function simpan()
     {
-        // Mendapatkan pengguna yang sedang login
-        $user = Auth::user();
+        // Assuming you want to get the id of the latest Datanovel record, you can use Eloquent's latest() method
+        $datanovel = Datanovel::latest()->first();
 
-        // Memeriksa apakah pengguna memiliki data novel yang terkait
-        if ($user->datanovel) {
-            // Jika ada, mendapatkan ID novel yang terkait dengan pengguna yang sedang login
-            $datanovel_id = $user->datanovel->id;
-
-            // Simpan bab baru dengan datanovel_id yang sesuai
+        // Check if $datanovel is not null before trying to access its id
+        if ($datanovel) {
             $simpan = new Chapter();
-            $simpan->datanovel_id = $datanovel_id; // Menyertakan datanovel_id
+            $simpan->datanovel_id = $datanovel->id;
             $simpan->chapter = $this->chaptermodel;
             $simpan->save();
-        }
 
-        // Clear input fields after saving
-        $this->reset(['chaptermodel']);
+            $this->reset(['chaptermodel']);
+        }
 
         return redirect('/create');
     }

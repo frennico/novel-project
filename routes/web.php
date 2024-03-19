@@ -32,6 +32,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/hapus/{id}', [App\Http\Controllers\HomeController::class, 'hapus']);
 Route::get('/Tampilan/{id}', [App\Http\Controllers\HomeController::class, 'Tampilan'])->name('Tampilan');
+Route::get('/Bacaan/{id}', [App\Http\Controllers\HomeController::class, 'Bacaan'])->name('Bacaan');
 
 // Route::get('/editnovel/{id}', App\Livewire\Edithapusnovel::class)->name('editnovel');
 Route::get('/editnovel/{id}', function () {

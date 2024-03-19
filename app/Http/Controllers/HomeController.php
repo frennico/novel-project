@@ -53,4 +53,13 @@ class HomeController extends Controller
         ]);
     }
 
+    public function Bacaan($id)
+    {
+        // Ambil bab berdasarkan id
+        $chapter = Chapter::findOrFail($id);
+
+        // Tambahan logika lainnya sesuai kebutuhan, misalnya, pengecekan apakah bab tersedia, dll.
+
+        return view('Bacaan', compact('chapter'));
+    }
 }

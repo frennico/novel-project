@@ -41,8 +41,8 @@
 
             <!-- Navbar Links (Desktop) -->
             <div class="hidden lg:flex space-x-4">
-                <a href="./Novel.html" class="text-white hover:text-gray-300">Home</a>
-                <a href="{{ url('/home') }}" class="text-white hover:text-gray-300">Genre</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Genre</a>
                 <a href="#" class="text-white hover:text-gray-300">History</a>
                 <a href="{{ url('/create') }}" class="text-white hover:text-gray-300">Create</a>
                 <a href="#" class="text-white hover:text-gray-300">Profile</a>
@@ -65,7 +65,7 @@
                     </button>
                 </div>
                 <div class="flex flex-col items-center">
-                    <a href="{{ url('/home') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
+                    <a href="{{ url('/') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Genre</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">History</a>
                     <a href="{{ url('/create') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Creat</a>

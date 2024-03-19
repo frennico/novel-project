@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter</title>
+    <title>{{ config('home', 'Novel') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- alpinejs -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2" defer></script>
@@ -31,8 +31,8 @@
 
             <!-- Navbar Links (Desktop) -->
             <div class="hidden lg:flex space-x-4">
-                <a href="./Novel.html" class="text-white hover:text-gray-300">Home</a>
-                <a href="{{ url('/home') }}" class="text-white hover:text-gray-300">Genre</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{{ url('/') }}" class="text-white hover:text-gray-300">Genre</a>
                 <a href="#" class="text-white hover:text-gray-300">History</a>
                 <a href="{{ url('/create') }}" class="text-white hover:text-gray-300">Create</a>
                 <a href="#" class="text-white hover:text-gray-300">Profile</a>
@@ -55,7 +55,7 @@
                     </button>
                 </div>
                 <div class="flex flex-col items-center">
-                    <a href="{{ url('/home') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
+                    <a href="{{ url('/') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Home</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Genre</a>
                     <a href="#" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">History</a>
                     <a href="{{ url('/create') }}" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Creat</a>
@@ -130,20 +130,12 @@
         <div class="bg-slate-200 pb-8">
             <div class="text-center text-4xl p-2 font-bold text-white mb-6" style="background-color: red;">CHAPTER</div>
 
-            @foreach (App\Models\chapter::all() as $data)
-                <div class="grid grid-cols-2 gap-5 px-6">
-                    <a href="{{ url('/Bacaan') }}" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 1</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 2</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 3</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 4</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 5</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 6</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 7</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 8</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 9</a>
-                    <a href="./" class="bg-transparent border-4 border-black text-black text-center px-3 py-3 rounded-2xl text-3xl">Chapter 10</a>
-                </div>
-            @endforeach
+            <div class="grid grid-cols-2 gap-5 px-6">
+                @foreach (App\Models\Chapter::where('datanovel_id', $Tampilan->id)->get() as $chapter)
+                    <a href="{{ url('/Bacaan/' . $chapter->id) }}" class="bg-transparent border-4 border-black text-black hover:text-sky-500 hover:border-sky-500 text-center px-3 py-3 rounded-2xl text-3xl">Chapter {{ $loop->iteration }}</a>
+                @endforeach
+            </div>
+
         </div>
     </div>
 
