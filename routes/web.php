@@ -34,6 +34,9 @@ Route::get('/hapus/{id}', [App\Http\Controllers\HomeController::class, 'hapus'])
 Route::get('/Tampilan/{id}', [App\Http\Controllers\HomeController::class, 'Tampilan'])->name('Tampilan');
 Route::get('/Bacaan/{id}', [App\Http\Controllers\HomeController::class, 'Bacaan'])->name('Bacaan');
 
+Route::get('/chapter/{id}/prev', [App\Livewire\Chapterlist::class, 'prev'])->name('chapter.prev');
+Route::get('/chapter/{id}/next', [App\Livewire\Chapterlist::class, 'next'])->name('chapter.next');
+
 // Route::get('/editnovel/{id}', App\Livewire\Edithapusnovel::class)->name('editnovel');
 Route::get('/editnovel/{id}', function () {
     return view('editnovel');

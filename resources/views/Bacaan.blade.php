@@ -12,7 +12,7 @@
     <!-- navbar -->
     <div id="chapter" class="static z-40 grid grid-cols-3 bg-slate-800 p-4">
         <div class="items-center flex"><a href="{{ url()->previous() }}" class="p-2 px-10 justify-start shadow-xl" style="background-color: red;" >Back</a></div>
-        <div class="items-center text-center text-4xl p-2 font-bold text-white">CHAPTER</div>
+        <div class="items-center text-center text-4xl p-2 font-bold text-white">{{ $chapter->title }}</div>
     </div>
 
 
@@ -28,8 +28,8 @@
             </select>
 
             <div class="flex justify-end gap-4">
-                <a href="" class="bg-slate-200  text-center pb-2 w-[25%]"><b class="text-2xl"><</b>    Prev</a>
-                <a href="" class="bg-slate-200  text-center pb-2 w-[25%]">Next<b class="text-2xl">   ></b></a>
+                <a href="{{ route('chapter.prev', $chapter->id) }}" class="bg-slate-200  text-center pb-2 w-[25%]"><b class="text-2xl"><</b>    Prev</a>
+                <a href="{{ route('chapter.next', $chapter->id) }}" class="bg-slate-200  text-center pb-2 w-[25%]">Next<b class="text-2xl">   ></b></a>
             </div>
         </div>
     </div>

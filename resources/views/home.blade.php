@@ -53,7 +53,7 @@
     <!-- Populer hari ini -->
     <div class="pt-12"></div>
     <div class="text-3xl ml-9">Terpopuler Hari ini:</div>
-    <div class="flex lg:w-5/12 xl:w-full overflow-x-auto mt-3">
+    <div class="static flex lg:w-5/12 xl:w-full overflow-x-auto mt-3">
         <div class="flex">
 
         <!-- Populer 1 -->
@@ -115,7 +115,7 @@
     <hr class="hidden lg:block mt-4 xl:ml-6 lg:w-[430px] xl:w-[735px] border-black">
 
     <!-- Bulan-semua -->
-    <div class="w-11/12 lg:w-[570px] ml-3 sm:ml-7 md:ml-4 mt-10 lg:ml-[450px] lg:-mt-[340px] xl:ml-[770px] xl:-mt-[355px] rounded-xl overflow-hidden bg-slate-300">
+    <div class="relative lg:absolute w-11/12 lg:w-[560px] ml-3 sm:ml-7 md:ml-4 mt-10 lg:ml-0 lg:-mt-0 lg:top-[430px] xl:top-[690px] lg:right-3 rounded-xl overflow-hidden bg-slate-300">
         <div class="text-2xl text-white p-2 text-center" style="background: linear-gradient(to right, black, red);">Populer</div>
 
         <div class="px-4 py-4 mb-4">
@@ -200,7 +200,7 @@
     </div>
 
         <!-- Baru -->
-        <div class="w-11/12 lg:w-5/12 relative mt-10 lg:-mt-[420px] ml-4 xl:ml-7 xl:w-[720px]">
+        <div class="w-11/12 lg:w-5/12 relative mt-10 ml-4 xl:ml-7 xl:w-[720px]">
             <div class="text-2xl text-white p-2 text-center" style="background: linear-gradient(to right, black, red);">Baru</div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 px-4">

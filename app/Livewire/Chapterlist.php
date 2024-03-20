@@ -17,10 +17,8 @@ class Chapterlist extends Component
 
     public function simpan()
     {
-        // Assuming you want to get the id of the latest Datanovel record, you can use Eloquent's latest() method
-        $datanovel = Datanovel::latest()->first();
+        $datanovel = Datanovel::findOrFail($this->datanovelId);
 
-        // Check if $datanovel is not null before trying to access its id
         if ($datanovel) {
             $simpan = new Chapter();
             $simpan->datanovel_id = $datanovel->id;
@@ -32,6 +30,31 @@ class Chapterlist extends Component
 
         return redirect('/create');
     }
+
+    public function prev($id)
+    {
+        $chapter = Chapter::find($id);
+        $prevChapter = Chapter::where('id', '<', $chapter->id)->orderBy('id', 'desc')->first();
+
+        if ($prevChapter) {
+            return redirect()->route('Bacaan', $prevChapter->id);
+        } else {
+            // Handle jika tidak ada bab sebelumnya
+        }
+    }
+
+    public function next($id)
+    {
+        $chapter = Chapter::find($id);
+        $nextChapter = Chapter::where('id', '>', $chapter->id)->orderBy('id', 'asc')->first();
+
+        if ($nextChapter) {
+            return redirect()->route('Bacaan', $nextChapter->id);
+        } else {
+            // Handle jika tidak ada bab selanjutnya
+        }
+    }
+
 
     public function render()
     {
