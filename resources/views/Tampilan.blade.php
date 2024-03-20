@@ -118,7 +118,7 @@
                     <div>{{ $Tampilan->chapter }}</div>
 
                     <p class="text-black font-bold text-4xl pb-5">{{ $Tampilan->title }}</p>
-                    <p class="text-black font-bold pb-5">Author(s) : {{ $Tampilan->user_name }}</p>
+                    <p class="text-black font-bold pb-5">Author(s) : {{ $Tampilan->name }}</p>
                     <p class="text-black">Sinopsis:</p>
                     <div class="w-11/12 h-40 px-1 hidden sm:block mb-1 xl:mb-4 container break-words overflow-y-auto border-2">{{ $Tampilan->sinopsis }}</div>
                 </div>
