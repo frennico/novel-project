@@ -57,10 +57,19 @@ class HomeController extends Controller
     {
         // Ambil bab berdasarkan id
         $chapter = Chapter::findOrFail($id);
+
+        // Ambil data novel berdasarkan id
         $Datanovel = Datanovel::find($id);
 
-        // Tambahan logika lainnya sesuai kebutuhan, misalnya, pengecekan apakah bab tersedia, dll.
+        // Tambahan logika untuk menampilkan judul dari Datanovel yang sesuai
+        $title = '';
+        if ($Datanovel) {
+            $title = $Datanovel->title;
+        }
 
-        return view('Bacaan', compact('chapter', 'Datanovel'));
+        // Kembalikan view dengan memberikan judul yang sesuai
+        return view('Bacaan', compact('chapter', 'title'));
     }
+
+
 }

@@ -12,7 +12,7 @@
     <!-- navbar -->
     <div id="chapter" class="static z-40 grid grid-cols-3 bg-slate-800 p-4">
         <div class="items-center flex"><a href="{{ url()->previous() }}" class="p-2 px-10 justify-start shadow-xl" style="background-color: red;" >Back</a></div>
-        <div class="items-center text-center text-4xl p-2 font-bold text-white">{{ $Datanovel->title }}</div>
+        <div class="items-center text-center text-4xl p-2 font-bold text-white">{{ $title }}</div>
     </div>
 
 

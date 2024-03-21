@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Chapter;
-use App\Models\datanovel;
+use App\Models\Datanovel;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
