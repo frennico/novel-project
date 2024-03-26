@@ -15,9 +15,10 @@
         <div></div>
     </div>
 
-    @livewire('chapterlist')
-    @livewireScripts
+    {{-- Include Chapterlist component and pass datanovelId --}}
+    @livewire('chapterlist', ['datanovelId' => $datanovelId])
 
+    @livewireScripts
 </body>
 
 </html>

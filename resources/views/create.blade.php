@@ -131,7 +131,7 @@
                 <div class="grid grid-cols-2 grid-rows-5 gap-7">
                     <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-blue-500 cursor-pointer" href="/editnovel/{{ $data->id }}">Edit</a>
                     <a class="h-10 w-24 text-center py-1 md:py-2 xl:mt-0 px-4 xl:px-6 bg-red-500 cursor-pointer" href="{{ url('/hapus/' . $data->id) }}">Hapus</a>
-                    <a href="{{ url('/chapternovel') }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
+                    <a href="{{ url('/chapternovel/' . $data->id) }}" class="relatve h-10 w-full col-span-2 py-1 text-center md:py-2 xl:mt-0 px-4 xl:px-8 bg-red-500 cursor-pointer">NEW Chapter</a>
                 </div>
             </div>
             @endif

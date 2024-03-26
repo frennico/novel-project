@@ -23,8 +23,9 @@ Route::get('/create', function () {
 Route::get('/createTitle', function () {
     return view('createTitle');
 });
-Route::get('/chapternovel', function () {
-    return view('chapternovel');
+Route::get('/chapternovel/{datanovelId}', function ($datanovelId) {
+    // Di sini Anda dapat menggunakan nilai dari $datanovelId
+    return view('chapternovel', ['datanovelId' => $datanovelId]);
 });
 
 Auth::routes();
